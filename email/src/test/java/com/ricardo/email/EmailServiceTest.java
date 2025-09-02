@@ -1,9 +1,9 @@
 package com.ricardo.email;
 
-import com.ricardo.email.enums.StatusEmail;
-import com.ricardo.email.models.Email;
-import com.ricardo.email.repositories.EmailRepository;
-import com.ricardo.email.services.EmailService;
+import com.ricardo.email.domain.models.enums.StatusEmail;
+import com.ricardo.email.domain.models.Email;
+import com.ricardo.email.application.port.EmailRepository;
+import com.ricardo.email.domain.services.EmailService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

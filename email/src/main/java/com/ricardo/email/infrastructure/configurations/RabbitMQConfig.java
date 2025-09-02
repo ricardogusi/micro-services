@@ -1,4 +1,4 @@
-package com.ricardo.email.configurations;
+package com.ricardo.email.infrastructure.configurations;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Queue;

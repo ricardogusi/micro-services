@@ -1,6 +1,6 @@
-package com.ricardo.email.repositories;
+package com.ricardo.email.application.port;
 
-import com.ricardo.email.models.Email;
+import com.ricardo.email.domain.models.Email;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package com.ricardo.email.dtos;
+package com.ricardo.email.infrastructure.rest.dtos;
 
 import java.util.UUID;
 

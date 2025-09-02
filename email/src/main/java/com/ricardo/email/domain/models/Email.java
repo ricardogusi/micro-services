@@ -1,6 +1,6 @@
-package com.ricardo.email.models;
+package com.ricardo.email.domain.models;
 
-import com.ricardo.email.enums.StatusEmail;
+import com.ricardo.email.domain.models.enums.StatusEmail;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

@@ -1,8 +1,8 @@
-package com.ricardo.email.services;
+package com.ricardo.email.domain.services;
 
-import com.ricardo.email.enums.StatusEmail;
-import com.ricardo.email.models.Email;
-import com.ricardo.email.repositories.EmailRepository;
+import com.ricardo.email.domain.models.Email;
+import com.ricardo.email.domain.models.enums.StatusEmail;
+import com.ricardo.email.application.port.EmailRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;

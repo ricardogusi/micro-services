@@ -1,8 +1,8 @@
-package com.ricardo.email.consumers;
+package com.ricardo.email.infrastructure.messaging;
 
-import com.ricardo.email.dtos.EmailRecordDto;
-import com.ricardo.email.models.Email;
-import com.ricardo.email.services.EmailService;
+import com.ricardo.email.infrastructure.rest.dtos.EmailRecordDto;
+import com.ricardo.email.domain.models.Email;
+import com.ricardo.email.domain.services.EmailService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.BeanUtils;
 import org.springframework.messaging.handler.annotation.Payload;
