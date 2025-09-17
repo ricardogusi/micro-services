@@ -1,8 +1,8 @@
 package com.ricardo.user;
 
 import com.ricardo.user.models.User;
-import com.ricardo.user.producers.UserProducer;
-import com.ricardo.user.repository.UserRepository;
+import com.ricardo.user.application.port.out.UserRepositoryPort;
+import com.ricardo.user.application.port.out.EmailProducerPort;
 import com.ricardo.user.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserServiceTest {
 
     @Mock
-    private UserRepository userRepository;
+    private UserRepositoryPort userRepositoryPort;
 
     @Mock
-    private UserProducer userProducer;
+    private EmailProducerPort emailProducerPort;
 
     @InjectMocks
     private UserService userService;
@@ -32,8 +32,8 @@ class UserServiceTest {
         user.setEmail("teste@email.com");
         user.setName("Teste Usuario");
 
-        when(userRepository.save(any(User.class))).thenReturn(user);
-        doNothing().when(userProducer).publishMessageEmail(any(User.class));
+    when(userRepositoryPort.save(any(User.class))).thenReturn(user);
+    doNothing().when(emailProducerPort).sendEmail(any());
 
         // Act
         User savedUser = userService.save(user);
@@ -43,7 +43,7 @@ class UserServiceTest {
         assertEquals("teste@email.com", savedUser.getEmail());
         assertEquals("Teste Usuario", savedUser.getName());
         
-        verify(userRepository, times(1)).save(any(User.class));
-        verify(userProducer, times(1)).publishMessageEmail(any(User.class));
+    verify(userRepositoryPort, times(1)).save(any(User.class));
+    verify(emailProducerPort, times(1)).sendEmail(any());
     }
 }

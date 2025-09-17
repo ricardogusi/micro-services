@@ -3,27 +3,29 @@ package com.ricardo.user.controllers;
 import com.ricardo.user.dtos.UserRecordDto;
 import com.ricardo.user.models.User;
 import com.ricardo.user.services.UserService;
-import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
-    final UserService userService;
+    private final UserService service;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserService service) {
+        this.service = service;
     }
 
-    @PostMapping("/users")
-    public ResponseEntity<User> saveUser(@RequestBody @Valid UserRecordDto userRecord) {
+
+    @PostMapping
+    public ResponseEntity<User> create(@RequestBody UserRecordDto dto) {
         User user = new User();
-        BeanUtils.copyProperties(userRecord, user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+        user.setName(dto.name());
+        user.setEmail(dto.email());
+        User created = service.save(user);
+        return ResponseEntity.ok(created);
     }
+
+    // ... demais endpoints ...
 }
